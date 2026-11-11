@@ -1,16 +1,23 @@
 package fabricish.block;
 
+import fabricish.entity.FabricIshModEntityTypes;
+import fabricish.entity.Tather;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.pattern.BlockPattern;
+import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
@@ -19,8 +26,47 @@ public class TinyPotatoBlock extends Block {
     private static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     private static final VoxelShape SHAPE = box(4, 0, 4, 12, 12, 12);
 
+    private static BlockPattern tatherPattern;
+
     protected TinyPotatoBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity by, ItemStack itemStack) {
+        checkSpawn(level, pos, state);
+    }
+
+    private static void checkSpawn(Level level, BlockPos pos, BlockState state) {
+        if (level.isClientSide()) return;
+
+        boolean isTinyPotato = state.is(FabricIshBlocks.TINY_POTATO);
+        if (!isTinyPotato) return;
+
+        BlockPattern.BlockPatternMatch match = getTatherPattern().find(level, pos);
+        if (match == null) return;
+
+        Tather tather = FabricIshModEntityTypes.TATHER.create(level, EntitySpawnReason.TRIGGERED);
+        if (tather == null) return;
+
+        tather.snapTo(Vec3.atLowerCornerOf(pos));
+
+        CarvedPumpkinBlock.clearPatternBlocks(level, match);
+
+        level.addFreshEntity(tather);
+        CarvedPumpkinBlock.updatePatternBlocks(level, match);
+    }
+
+    private static BlockPattern getTatherPattern() {
+        if (tatherPattern == null) {
+            tatherPattern = BlockPatternBuilder.start()
+                .aisle("+++", "###", "-#-")
+                .where('+', block -> block.getState().is(FabricIshBlocks.TINY_POTATO))
+                .where('#', block -> block.getState().is(Blocks.DIRT))
+                .where('-', block -> block.getState().isAir())
+                .build();
+        }
+        return tatherPattern;
     }
 
     @Override
