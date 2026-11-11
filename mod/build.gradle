@@ -22,6 +22,7 @@ loom {
 	}
   runs.configureEach {
     getGenerateRunConfig().set(true)
+    jvmArguments.add("-XX:+AllowEnhancedClassRedefinition")
   }
 }
 

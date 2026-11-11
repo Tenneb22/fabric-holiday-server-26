@@ -28,6 +28,6 @@ public class Tather extends Monster {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector
+        //this.goalSelector
     }
 }

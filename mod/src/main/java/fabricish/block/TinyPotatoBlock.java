@@ -49,7 +49,13 @@ public class TinyPotatoBlock extends Block {
         Tather tather = FabricIshModEntityTypes.TATHER.create(level, EntitySpawnReason.TRIGGERED);
         if (tather == null) return;
 
-        tather.snapTo(Vec3.atLowerCornerOf(pos));
+        BlockPos spawnPos = match.getBlock(1, 2, 0).getPos();
+        //tather.snapTo(Vec3.atLowerCornerOf(pos));
+        //tather.snapTo(Vec3.atLowerCornerOf(spawnPos));
+        tather.snapTo(
+            spawnPos.getX() + 0.5, spawnPos.getY() + 0.55, spawnPos.getZ() + 0.5, match.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F, 0.0F
+        );
+        tather.yBodyRot = match.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F;
 
         CarvedPumpkinBlock.clearPatternBlocks(level, match);
 

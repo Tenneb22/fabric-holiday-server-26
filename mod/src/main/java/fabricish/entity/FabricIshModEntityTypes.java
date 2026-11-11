@@ -17,10 +17,11 @@ public class FabricIshModEntityTypes {
         EntityType.Builder.<Tather>of(Tather::new, MobCategory.MISC)
             //.fireImmune()
             //.immuneTo(BlockTags.WITHER_IMMUNE_TO)
-            .sized(0.9F, 3.5F)
+            .sized(0.5F, 0.75F),
             //.clientTrackingRange(10)
             //.notInPeaceful()
             //.dontTrackDeltas()
+        Tather.createTatherAttributes()
     );
 
     private static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
