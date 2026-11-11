@@ -1,5 +1,6 @@
 package fabricish;
 
+import fabricish.entity.FabricIshModEntityTypes;
 import fabricish.block.FabricIshBlocks;
 import fabricish.item.FabricIshItems;
 import fabricish.server.ServerAdmin;
@@ -30,6 +31,7 @@ public class FabricIshMod implements ModInitializer {
 
         FabricIshBlocks.initialize();
         FabricIshItems.register();
+        FabricIshModEntityTypes.initialize();
         FabricIshPayloads.register();
         FabricIshCommands.register();
 
