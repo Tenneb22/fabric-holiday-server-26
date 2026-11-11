@@ -589,6 +589,10 @@ file = "mods/spark.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/spiky-spikes.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/sticky-redstone.pw.toml"
 metafile = true
 

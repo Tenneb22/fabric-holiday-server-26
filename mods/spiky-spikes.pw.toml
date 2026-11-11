@@ -1,0 +1,13 @@
+name = "Spiky Spikes"
+filename = "spikyspikes-v26.3.1-mc26.3.x+fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/DUaLBLVL/versions/LoCeXRzm/spikyspikes-v26.3.1-mc26.3.x%2Bfabric.jar"
+hash-format = "sha512"
+hash = "e0f0e177b05e81add54552347ec3604e34edd133d8db76e019b52e47a6826254265294dea008b9e4058f561c4350385552189a326d38efc3edcbc1cc395c44c4"
+
+[update]
+[update.modrinth]
+mod-id = "DUaLBLVL"
+version = "LoCeXRzm"
