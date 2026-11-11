@@ -1,7 +1,7 @@
 package fabricish.client;
 
 import fabricish.client.model.FabricIshModelLayers;
-import fabricish.client.render.entity.TatherRenderer;
+import fabricish.client.render.entity.TaterRenderer;
 import fabricish.entity.FabricIshModEntityTypes;
 import com.mojang.blaze3d.Blaze3D;
 import fabricish.FabricIshMod;
@@ -27,6 +27,6 @@ public class FabricIshModClient implements ClientModInitializer {
 	}
 
     private void registerEntityRenderers() {
-        EntityRenderers.register(FabricIshModEntityTypes.TATHER, TatherRenderer::new);
+        EntityRenderers.register(FabricIshModEntityTypes.TATER, TaterRenderer::new);
     }
 }

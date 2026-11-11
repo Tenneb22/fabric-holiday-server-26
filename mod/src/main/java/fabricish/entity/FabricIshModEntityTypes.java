@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,16 +11,16 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 
 public class FabricIshModEntityTypes {
-    public static final EntityType<Tather> TATHER = register(
-        FabricIshModEntityTypeIds.TATHER,
-        EntityType.Builder.<Tather>of(Tather::new, MobCategory.MISC)
+    public static final EntityType<Tater> TATER = register(
+        FabricIshModEntityTypeIds.TATER,
+        EntityType.Builder.<Tater>of(Tater::new, MobCategory.MISC)
             //.fireImmune()
             //.immuneTo(BlockTags.WITHER_IMMUNE_TO)
             .sized(0.5F, 0.75F),
             //.clientTrackingRange(10)
             //.notInPeaceful()
             //.dontTrackDeltas()
-        Tather.createTatherAttributes()
+        Tater.createTaterAttributes()
     );
 
     private static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {

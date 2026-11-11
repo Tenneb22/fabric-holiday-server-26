@@ -1,6 +1,6 @@
 package fabricish.client.model;
 
-import fabricish.client.render.entity.state.TatherRenderState;
+import fabricish.client.render.entity.state.TaterRenderState;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartNames;
@@ -10,8 +10,8 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
-public class TatherModel extends EntityModel<TatherRenderState> {
-    public TatherModel(ModelPart root) {
+public class TaterModel extends EntityModel<TaterRenderState> {
+    public TaterModel(ModelPart root) {
         super(root);
     }
 
