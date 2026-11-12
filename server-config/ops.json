@@ -40,5 +40,11 @@
     "name": "niclan051",
     "level": 4,
     "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "6fe9a184-9f23-47de-ad26-fa26cc31f941",
+    "name": "rotgruengelb",
+    "level": 4,
+    "bypassesPlayerLimit": false
   }
 ]
