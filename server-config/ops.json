@@ -46,5 +46,17 @@
     "name": "rotgruengelb",
     "level": 4,
     "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "454c9909-7092-4e6b-bd65-f799099b1ab1",
+    "name": "evelynmeow_",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "796e27ef-88b7-4218-8e85-e171ace8b424",
+    "name": "Tenneb22",
+    "level": 4,
+    "bypassesPlayerLimit": false
   }
 ]
