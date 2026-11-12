@@ -169,15 +169,7 @@ file = "mods/controlling.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/crash-assistant.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/crashexploitfixer.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/cubes-without-borders.pw.toml"
 metafile = true
 
 [[files]]
@@ -610,10 +602,6 @@ metafile = true
 
 [[files]]
 file = "mods/smbs.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/smooth-scroll.pw.toml"
 metafile = true
 
 [[files]]
