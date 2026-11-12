@@ -14,7 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.PermissionLevel;
-import net.minecraft.server.permissions.Permissions;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.level.gameevent.GameEvent;
 
@@ -52,9 +51,9 @@ public class CrashCommand {
         UUID voter = voterPlayer.getUUID();
         ServerPlayer victimPlayer = EntityArgument.getPlayer(ctx, "victim");
         UUID victim = victimPlayer.getUUID();
-        Set<UUID> judges = VOTES.computeIfAbsent(voter, _ -> Collections.newSetFromMap(new ConcurrentHashMap<>()));
-        if (!judges.contains(victim)) {
-            judges.add(victim);
+        Set<UUID> judges = VOTES.computeIfAbsent(victim, _ -> Collections.newSetFromMap(new ConcurrentHashMap<>()));
+        if (!judges.contains(voter)) {
+            judges.add(voter);
             String progress = " (" + judges.size() + "/" + ((source.getServer().getPlayerCount() + 1) / 2) + ")";
             source.getServer().getPlayerList().broadcastSystemMessage(Component.literal("").append(voterPlayer.getName()).append(" has voted to crash ").append(victimPlayer.getName()).append(Component.literal(progress).withStyle(ChatFormatting.GRAY)), false);
             return 0;
@@ -69,9 +68,9 @@ public class CrashCommand {
         UUID voter = voterPlayer.getUUID();
         ServerPlayer victimPlayer = EntityArgument.getPlayer(ctx, "victim");
         UUID victim = victimPlayer.getUUID();
-        Set<UUID> judges = VOTES.computeIfAbsent(voter, _ -> Collections.newSetFromMap(new ConcurrentHashMap<>()));
-        if (judges.contains(victim)) {
-            judges.remove(victim);
+        Set<UUID> judges = VOTES.computeIfAbsent(victim, _ -> Collections.newSetFromMap(new ConcurrentHashMap<>()));
+        if (judges.contains(voter)) {
+            judges.remove(voter);
             String progress = " (" + judges.size() + "/" + ((source.getServer().getPlayerCount() + 1) / 2) + ")";
             source.getServer().getPlayerList().broadcastSystemMessage(Component.literal("").append(voterPlayer.getName()).append(" has removed their vote to crash ").append(victimPlayer.getName()).append(Component.literal(progress).withStyle(ChatFormatting.GRAY)), false);
             return 0;
@@ -88,17 +87,17 @@ public class CrashCommand {
         List<Runnable> defer = new ArrayList<>();
         PlayerList playerList = server.getPlayerList();
         int playerCount = playerList.getPlayerCount();
-        VOTES.forEach((uuid, judges) -> {
-            if (!(playerList.getPlayer(uuid) instanceof ServerPlayer victim)) defer.add(() -> VOTES.remove(uuid));
+        VOTES.forEach((victimUuid, judges) -> {
+            if (!(playerList.getPlayer(victimUuid) instanceof ServerPlayer victim)) defer.add(() -> VOTES.remove(victimUuid));
             else {
                 List<UUID> judgesButALittleMoreSafe = List.copyOf(judges);
                 int i = 0;
                 for (UUID judge : judgesButALittleMoreSafe) {
-                    if (playerList.getPlayer(uuid) == null) defer.add(() -> judges.remove(judge));
+                    if (playerList.getPlayer(victimUuid) == null) defer.add(() -> judges.remove(judge));
                     else i++;
                 }
                 if (byeBye(i, playerCount)) {
-                    defer.add(() -> VOTES.remove(uuid));
+                    defer.add(() -> VOTES.remove(victimUuid));
                     defer.add(() -> {
                         playerList.broadcastSystemMessage(Component.literal("The people have spoken, ").append(victim.getName()).append(" has been sent to touch grass!"), false);
                         victim.gameEvent(GameEvent.LIGHTNING_STRIKE);
