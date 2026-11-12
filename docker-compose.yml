@@ -39,11 +39,20 @@ services:
       OPS: "${MC_OPS:-}"
       # No RCON: whitelist/ops sync and pack updates run inside the server (holiday mod).
       ENABLE_RCON: "false"
+      # Lets `docker compose exec mc mc-send-to-console <command>` reach the server console.
+      CREATE_CONSOLE_IN_PIPE: "true"
+      # The repo's config/ folder is copied over data/config on EVERY start (see volumes), so
+      # these files are the source of truth and manual edits on the server are replaced.
+      SYNC_SKIP_NEWER_IN_DESTINATION: "false"
+      REPLACE_ENV_DURING_SYNC: "false"
       TZ: "${TZ:-Europe/Berlin}"
     volumes:
       - ./data:/data
       # Snapshots written by the holiday mod before a pack update (see revert.sh).
       - ./backups:/backups
+      # Pack config (c2me.toml, vss-server-config.yaml, streamsreflowing.properties, ...), enforced
+      # on every start. Add a file to config/ in the repo and the server uses it after a restart.
+      - ./config:/config:ro
       # Server config files from the repo, mounted read-only one by one: the container always
       # sees exactly the repo version, nothing is copied or merged. (whitelist.json and
       # ops.json are synced by the holiday mod from WHITELIST_URL / OPS_URL.)
