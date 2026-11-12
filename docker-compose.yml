@@ -59,6 +59,7 @@ services:
       - ./server-config/config/chunkyborder/borders.json:/data/config/chunkyborder/borders.json:ro
       - ./server-config/config/bluemap/core.conf:/data/config/bluemap/core.conf:ro
       - ./server-config/config/bluemap/webserver.conf:/data/config/bluemap/webserver.conf:ro
+      - ./server-config/config/bluemap/storages/file.conf:/data/config/bluemap/storages/file.conf:ro
 
   # Optional HTTPS for the BlueMap web map: `docker compose --profile https up -d`
   # Needs MAP_DOMAIN in .env (DNS A/AAAA record pointing at this server, ports 80 + 443 open).
