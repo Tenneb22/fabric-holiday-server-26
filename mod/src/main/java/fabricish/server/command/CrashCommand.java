@@ -13,6 +13,8 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.PermissionLevel;
+import net.minecraft.server.permissions.Permissions;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.level.gameevent.GameEvent;
 
@@ -27,16 +29,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CrashCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext buildContext, Commands.CommandSelection selection) {
-        dispatcher.register(Commands.literal("crash").executes(c -> crash(c.getSource())).then(Commands.literal("vote").then(Commands.argument("victim", EntityArgument.player()).executes(CrashCommand::crashVote))).then(Commands.literal("unvote").then(Commands.argument("victim", EntityArgument.player()).executes(CrashCommand::crashUnvote))));
+        dispatcher.register(Commands.literal("crash").executes(CrashCommand::crash).then(Commands.literal("vote").then(Commands.argument("victim", EntityArgument.player()).executes(CrashCommand::crashVote))).then(Commands.literal("unvote").then(Commands.argument("victim", EntityArgument.player()).executes(CrashCommand::crashUnvote))));
     }
 
     public static final Map<UUID, Set<UUID>> VOTES = new ConcurrentHashMap<>(); // performance? for real?
 
-    private static int crash(CommandSourceStack source) {
-        if (source.getEntity() == null) {
+    private static int crash(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        CommandSourceStack source = ctx.getSource();
+        if (source.getEntity() == null && source.getPermissionContext().permissionLevel().isEqualOrHigherThan(PermissionLevel.OWNERS)) {
             MemorySegment.ofAddress(0).reinterpret(1000).setString(0, "get crashed");
             return 0; // we are never getting here
-        } else if (source.getPlayer() instanceof ServerPlayer player) {
+        } else if (source.getPlayerOrException() instanceof ServerPlayer player) {
             ServerPlayNetworking.send(player, CrashPayload.INSTANCE);
             return 0;
         }
