@@ -1,13 +1,13 @@
-filename = 'rftoolsbase-fabric-26.3-9.0.2-fabric.jar'
-name = 'RFTools Base'
-side = 'both'
+name = "RFTools Base (Fabric)"
+filename = "rftoolsbase-fabric-26.3-26.3-6.0.11.4.jar"
+side = "both"
 
 [download]
-hash = 'f2a4889c19b862b7cc1cc550d4fcbb9ce1d2533ced131f8f158ec33abb72020949240024b192224f8d3ed079081af003f84f64170d897a7052459ca1c88cbf4d'
-hash-format = 'sha512'
-mode = 'url'
-url = 'https://cdn.modrinth.com/data/hIO8IsD8/versions/DHQIt9rW/rftoolsbase-fabric-26.3-9.0.2-fabric.jar'
+hash-format = "sha1"
+hash = "080b462d3fde42237ff0c9714a5c9e847482f9fa"
+mode = "metadata:curseforge"
 
-[update.modrinth]
-mod-id = 'hIO8IsD8'
-version = 'DHQIt9rW'
+[update]
+[update.curseforge]
+file-id = 9202130
+project-id = 1705327

@@ -1,13 +1,13 @@
-filename = 'rftoolsbuilder-fabric-26.3-10.0.0-fabric.jar'
-name = 'RFTools Builder'
-side = 'both'
+name = "RFTools Builder (Fabric)"
+filename = "rftoolsbuilder-fabric-26.3-26.3-7.0.7.3.jar"
+side = "both"
 
 [download]
-hash = '3ff02472c6a56aea3cc6432db4ae95316da9f2e95ed780c9f7765c4f93766b4a0943be6fd3e6b1f732eb1d8c468be3e8d9febd603f41808be7d4a15fe9103169'
-hash-format = 'sha512'
-mode = 'url'
-url = 'https://cdn.modrinth.com/data/e0IclJLr/versions/qZBKEH1s/rftoolsbuilder-fabric-26.3-10.0.0-fabric.jar'
+hash-format = "sha1"
+hash = "1ad78f5c86de7f344993a62c6578669928a27e48"
+mode = "metadata:curseforge"
 
-[update.modrinth]
-mod-id = 'e0IclJLr'
-version = 'qZBKEH1s'
+[update]
+[update.curseforge]
+file-id = 9294381
+project-id = 1740176

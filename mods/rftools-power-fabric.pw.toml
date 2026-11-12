@@ -1,13 +1,13 @@
-filename = 'rftoolspower-fabric-26.3-10.0.2-fabric.jar'
-name = 'RFTools Power'
-side = 'both'
+name = "RFTools Power (Fabric)"
+filename = "rftoolspower-fabric-26.3-26.3-7.0.6.1.jar"
+side = "both"
 
 [download]
-hash = '3fe03b468e7b410360272911cc7cc7ff19ddfe4713c9d74086cfbbe893750718cbb682dc0fd05d804a1935a925f8402d4736c9e3106a59944f7f3a38a3b4fb08'
-hash-format = 'sha512'
-mode = 'url'
-url = 'https://cdn.modrinth.com/data/YWbLuPa1/versions/uPB7K5Q5/rftoolspower-fabric-26.3-10.0.2-fabric.jar'
+hash-format = "sha1"
+hash = "ad109e781cffc0999bedd85a89a70e1b53ea9d45"
+mode = "metadata:curseforge"
 
-[update.modrinth]
-mod-id = 'YWbLuPa1'
-version = 'uPB7K5Q5'
+[update]
+[update.curseforge]
+file-id = 9140112
+project-id = 1740156

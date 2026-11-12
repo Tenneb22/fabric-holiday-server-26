@@ -1,13 +1,13 @@
-filename = 'xnet-fabric-26.3-10.0.1-fabric.jar'
-name = 'XNet'
-side = 'both'
+name = "XNet (Fabric)"
+filename = "xnet-fabric-26.3-26.3-7.0.7.3.jar"
+side = "both"
 
 [download]
-hash = 'dc34d25fd6e32dd564b1a15c7b1af73e526c47d38a88e63e8fc5b57ec912bb8e0830d0f9245ed8e371c5339b566738edda931483b609e9f9abaefe5d164e39e1'
-hash-format = 'sha512'
-mode = 'url'
-url = 'https://cdn.modrinth.com/data/iu1jkWqa/versions/YrTfHjpM/xnet-fabric-26.3-10.0.1-fabric.jar'
+hash-format = "sha1"
+hash = "bf03a1f2a18bc423b37ab8b45f9bc2f0869da2f2"
+mode = "metadata:curseforge"
 
-[update.modrinth]
-mod-id = 'iu1jkWqa'
-version = 'YrTfHjpM'
+[update]
+[update.curseforge]
+file-id = 9202341
+project-id = 1705340
