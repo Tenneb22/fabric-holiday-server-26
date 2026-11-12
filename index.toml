@@ -173,6 +173,10 @@ file = "mods/crashexploitfixer.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/cubes-without-borders.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/cyclops-core.pw.toml"
 metafile = true
 
@@ -517,10 +521,6 @@ file = "mods/puzzles-lib.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/rei.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/resourceful-config.pw.toml"
 metafile = true
 
@@ -554,6 +554,10 @@ metafile = true
 
 [[files]]
 file = "mods/rightclickharvest.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/rrv.pw.toml"
 metafile = true
 
 [[files]]
@@ -594,10 +598,6 @@ metafile = true
 
 [[files]]
 file = "mods/sit.pw.toml"
-metafile = true
-
-[[files]]
-file = "mods/skinshuffle.pw.toml"
 metafile = true
 
 [[files]]
