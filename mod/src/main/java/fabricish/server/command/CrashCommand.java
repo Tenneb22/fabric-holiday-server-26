@@ -93,7 +93,7 @@ public class CrashCommand {
                 List<UUID> judgesButALittleMoreSafe = List.copyOf(judges);
                 int i = 0;
                 for (UUID judge : judgesButALittleMoreSafe) {
-                    if (playerList.getPlayer(victimUuid) == null) defer.add(() -> judges.remove(judge));
+                    if (playerList.getPlayer(judge) == null) defer.add(() -> judges.remove(judge));
                     else i++;
                 }
                 if (byeBye(i, playerCount)) {
