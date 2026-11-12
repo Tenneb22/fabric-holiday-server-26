@@ -293,10 +293,6 @@ file = "mods/indypets.pw.toml"
 metafile = true
 
 [[files]]
-file = "mods/inputoptimizer.pw.toml"
-metafile = true
-
-[[files]]
 file = "mods/iris.pw.toml"
 metafile = true
 
