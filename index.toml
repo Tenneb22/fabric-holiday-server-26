@@ -385,6 +385,10 @@ file = "mods/macaws-windows.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/macos-input-fixes.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/magic-vibe-decorations.pw.toml"
 metafile = true
 
