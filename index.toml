@@ -13,6 +13,14 @@ file = "mods/advanced-netherite.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/almanac.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/alternate-current.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/appleskin.pw.toml"
 metafile = true
 
@@ -22,6 +30,14 @@ metafile = true
 
 [[files]]
 file = "mods/architectury-api.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/async.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/asynclogger.pw.toml"
 metafile = true
 
 [[files]]
@@ -157,6 +173,10 @@ file = "mods/crash-assistant.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/crashexploitfixer.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/cubes-without-borders.pw.toml"
 metafile = true
 
@@ -249,6 +269,10 @@ file = "mods/fzzy-config.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/get-it-together-drops.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/grind-enchantments.pw.toml"
 metafile = true
 
@@ -285,6 +309,10 @@ file = "mods/jamlib.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/jukebox-custom-disc-fix.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/just-hammers.pw.toml"
 metafile = true
 
@@ -310,6 +338,10 @@ metafile = true
 
 [[files]]
 file = "mods/lithostitched.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/lmd.pw.toml"
 metafile = true
 
 [[files]]
@@ -497,6 +529,10 @@ file = "mods/rei.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/resourceful-config.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/rftools-base-fabric.pw.toml"
 metafile = true
 
@@ -533,11 +569,19 @@ file = "mods/rustic-delight.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/scalablelux.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/searchables.pw.toml"
 metafile = true
 
 [[files]]
 file = "mods/seeu.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/servercore.pw.toml"
 metafile = true
 
 [[files]]
@@ -622,6 +666,10 @@ metafile = true
 
 [[files]]
 file = "mods/streams-reflowing.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/structure-layout-optimizer.pw.toml"
 metafile = true
 
 [[files]]
@@ -754,6 +802,14 @@ metafile = true
 
 [[files]]
 file = "mods/yosbr.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/zconfig.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/zfastnoise.pw.toml"
 metafile = true
 
 [[files]]
