@@ -1,0 +1,13 @@
+filename = 'brewery-0.17.1+26.3.jar'
+name = 'Patboxs Brewery'
+side = 'server'
+
+[download]
+hash = '4ff7906dfae81935ed14fc8de5dda436bb473ced3ff8e4065046435d2ea7fce9e461344ea10b60f14537ce9270898d681ac8158db06f04d7f0ac591170909e76'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/nr7cSJlY/versions/TMhh71om/brewery-0.17.1%2B26.3.jar'
+
+[update.modrinth]
+mod-id = 'nr7cSJlY'
+version = 'TMhh71om'

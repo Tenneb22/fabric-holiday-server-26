@@ -57,6 +57,10 @@ file = "mods/bluemap.pw.toml"
 metafile = true
 
 [[files]]
+file = "mods/brewery.pw.toml"
+metafile = true
+
+[[files]]
 file = "mods/c2me-fabric.pw.toml"
 metafile = true
 
@@ -374,6 +378,10 @@ metafile = true
 
 [[files]]
 file = "mods/mixson.pw.toml"
+metafile = true
+
+[[files]]
+file = "mods/modernfix-mvus.pw.toml"
 metafile = true
 
 [[files]]
