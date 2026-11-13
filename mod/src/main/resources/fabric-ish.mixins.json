@@ -3,8 +3,10 @@
 	"package": "fabricish.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-    "FabricIshMixin"
+      "FabricIshMixin",
+      "actuallymixins.BlockAtomicReconstructor$TheItemBlockMixin"
 	],
+   "plugin": "fabricish.mixin.Plugin",
 	"injectors": {
 		"defaultRequire": 1
 	},
