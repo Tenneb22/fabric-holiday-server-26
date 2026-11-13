@@ -9,7 +9,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,8 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
@@ -44,6 +41,11 @@ public class TinyPotatoBlock extends Block {
             Tater tater = FabricIshModEntityTypes.TATER.create(level, EntitySpawnReason.TRIGGERED);
 
             if (tater != null) {
+                // 20%? chance for tater to get angry
+                if (tater.getRandom().nextInt(5) == 0) {
+                    tater.makeAngry();
+                }
+
                 float yRotation = state.getValue(FACING).toYRot();
 
                 tater.snapTo(pos, yRotation, 0);

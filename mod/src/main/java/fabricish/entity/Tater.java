@@ -1,31 +1,31 @@
 package fabricish.entity;
 
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
 public class Tater extends TamableAnimal {
-    public Tater(Level level) {
-        super(FabricIshModEntityTypes.TATER, level);
-    }
+    private static final EntityDataAccessor<Boolean> IS_ANGRY = SynchedEntityData.defineId(Tater.class, EntityDataSerializers.BOOLEAN);
+    private static final String TAG_IS_ANGRY = "IS_ANGRY";
+
+    private FollowOwnerGoal followOwnerGoal;
 
     public Tater(EntityType<? extends Tater> entityType, Level world) {
         super(entityType, world);
@@ -35,7 +35,8 @@ public class Tater extends TamableAnimal {
         return Mob.createMobAttributes()
             .add(Attributes.MAX_HEALTH, 30.0)
             .add(Attributes.MOVEMENT_SPEED, 0.6F)
-            .add(Attributes.FOLLOW_RANGE, 40.0);
+            .add(Attributes.FOLLOW_RANGE, 40.0)
+            .add(Attributes.ATTACK_DAMAGE, 2.0);
     }
 
     @Override
@@ -47,10 +48,12 @@ public class Tater extends TamableAnimal {
 
     @Override
     protected void registerGoals() {
-        goalSelector.addGoal(1, new FollowOwnerGoal(this, 1, 5, 1.5f));
-        goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
+        followOwnerGoal = new FollowOwnerGoal(this, 0.5, 10, 2);
+
+        goalSelector.addGoal(0, new FloatGoal(this));
+        goalSelector.addGoal(1, followOwnerGoal);
+        goalSelector.addGoal(2, new RandomStrollGoal(this, 0.25));
         goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-        goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0f));
     }
 
     @Override
@@ -111,5 +114,41 @@ public class Tater extends TamableAnimal {
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel level, AgeableMob partner) {
         return null;
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder entityData) {
+        super.defineSynchedData(entityData);
+        entityData.define(IS_ANGRY, false);
+    }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.putBoolean(TAG_IS_ANGRY, isAngry());
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+
+        if (input.getBooleanOr(TAG_IS_ANGRY, false)) {
+            makeAngry();
+        }
+    }
+
+    public boolean isAngry() {
+        return this.entityData.get(IS_ANGRY);
+    }
+
+    // don't allow calming the tater again (for now)
+    public void makeAngry() {
+        this.entityData.set(IS_ANGRY, true);
+
+        // kinda janky, but the easiest option (i think)
+        goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));
+        targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+
+        goalSelector.removeGoal(followOwnerGoal);
     }
 }
