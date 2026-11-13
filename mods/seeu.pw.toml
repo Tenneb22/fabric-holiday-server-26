@@ -1,13 +1,13 @@
-filename = 'seeu-fabric-0.9.5.jar'
+filename = 'seeu-fabric-26.3-0.9.6.jar'
 name = 'SeeU'
 side = 'both'
 
 [download]
-hash = '942bd9c833b26df08dfa45e74f69f7479759106cf8f4731aee79a9c6551b8131d7baa621a4a430aace699851fa8c6dbb3fe14423277e8714296b5453c4cf1d5f'
+hash = '590bb0d63461e93633357ea4b5d19ef8de450364058f696891d0789babfdf3995fce2f818556a5569e9ea016a518f33901b5b1a37bc09e06788d095bb4e776a8'
 hash-format = 'sha512'
 mode = 'url'
-url = 'https://cdn.modrinth.com/data/coyNPDey/versions/AbntvQim/seeu-fabric-0.9.5.jar'
+url = 'https://cdn.modrinth.com/data/coyNPDey/versions/kXqF7GNP/seeu-fabric-26.3-0.9.6.jar'
 
 [update.modrinth]
 mod-id = 'coyNPDey'
-version = 'AbntvQim'
+version = 'kXqF7GNP'

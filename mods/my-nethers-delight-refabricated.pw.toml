@@ -1,13 +1,13 @@
-filename = 'mynethersdelight-3.0.0-1.10.4-beta.2-fabric+26.3.jar'
+filename = 'mynethersdelight-3.0.0-1.10.4-beta.3-fabric+26.3.jar'
 name = 'My Nethers Delight Refabricated'
 side = 'both'
 
 [download]
-hash = 'f7bef284a1a7f2cb43cb094aa99f3bfe15d277847eb20dc7d876132b5cf0bdc1004c839a0a66b6e54cea9bdf0a66fe8f83e513d0b0c8b0f9b50dbd330a077f1b'
+hash = 'ce802ced242497b9b6f39d53c6690c23f810cc024af6fcdad2abdbf9c619f86e0e2a853252731738144317a4b9ccf337fb3bdffe1e369e5214c9666b756ffb5a'
 hash-format = 'sha512'
 mode = 'url'
-url = 'https://cdn.modrinth.com/data/uIOfYdnw/versions/UtNbWx0H/mynethersdelight-3.0.0-1.10.4-beta.2-fabric%2B26.3.jar'
+url = 'https://cdn.modrinth.com/data/uIOfYdnw/versions/j59pG1ep/mynethersdelight-3.0.0-1.10.4-beta.3-fabric%2B26.3.jar'
 
 [update.modrinth]
 mod-id = 'uIOfYdnw'
-version = 'UtNbWx0H'
+version = 'j59pG1ep'
