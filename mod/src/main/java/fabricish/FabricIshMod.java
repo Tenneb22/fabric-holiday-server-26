@@ -4,6 +4,7 @@ import fabricish.block.FabricIshBlocks;
 import fabricish.item.FabricIshItems;
 import fabricish.server.ServerAdmin;
 
+import fabricish.utils.MainThreadChecker;
 import fabricish.server.command.CrashCommand;
 import fabricish.server.command.FabricIshCommands;
 import fabricish.server.payload.FabricIshPayloads;
@@ -18,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 public class FabricIshMod implements ModInitializer {
 	public static final String MOD_ID = "fabric-ish";
-
+    public static MainThreadChecker safety = level -> level.getServer() != null && level.getServer().isSameThread();
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
