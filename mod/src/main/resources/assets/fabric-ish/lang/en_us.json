@@ -57,5 +57,7 @@
 
   "item.fabric-ish.concern_banner_pattern": "Concern Banner Pattern",
   "item.fabric-ish.fabric_banner_pattern": "Fabric Banner Pattern",
-  "item.fabric-ish.tater_banner_pattern": "Tater Banner Pattern"
+  "item.fabric-ish.tater_banner_pattern": "Tater Banner Pattern",
+
+  "entity.fabric-ish.tater": "Tater"
 }
