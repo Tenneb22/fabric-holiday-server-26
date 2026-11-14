@@ -165,7 +165,6 @@ public class Tater extends TamableAnimal {
     public void handleEntityEvent(@EntityEvent.Value byte id) {
         if (id == (byte) 676767) {
             useKnifeAnimationState.start(tickCount);
-            System.out.println("Animation started on the client!");
         } else {
             super.handleEntityEvent(id);
         }
