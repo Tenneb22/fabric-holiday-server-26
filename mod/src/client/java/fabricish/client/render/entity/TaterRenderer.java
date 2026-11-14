@@ -3,6 +3,7 @@ package fabricish.client.render.entity;
 import fabricish.FabricIshMod;
 import fabricish.client.model.FabricIshModelLayers;
 import fabricish.client.model.TaterModel;
+import fabricish.client.render.entity.layer.TaterKnifeLayer;
 import fabricish.client.render.entity.state.TaterRenderState;
 import fabricish.entity.Tater;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -12,9 +13,11 @@ import net.minecraft.resources.Identifier;
 public class TaterRenderer extends MobRenderer<Tater, TaterRenderState, TaterModel> {
     private static final Identifier TEXTURE = FabricIshMod.id("textures/entity/tater.png");
     private static final Identifier ANGRY_TEXTURE = FabricIshMod.id("textures/entity/tater_angry.png");
+    public static final Identifier TATER_KNIFE = FabricIshMod.id("textures/entity/tater_knife.png");
 
     public TaterRenderer(EntityRendererProvider.Context context) {
         super(context, new TaterModel(context.bakeLayer(FabricIshModelLayers.TATER)), 0.5f);
+        addLayer(new TaterKnifeLayer(this, context.getModelSet()));
     }
 
     @Override
