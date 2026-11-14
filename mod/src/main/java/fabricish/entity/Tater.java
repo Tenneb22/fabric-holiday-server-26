@@ -25,8 +25,6 @@ public class Tater extends TamableAnimal {
     private static final EntityDataAccessor<Boolean> IS_ANGRY = SynchedEntityData.defineId(Tater.class, EntityDataSerializers.BOOLEAN);
     private static final String TAG_IS_ANGRY = "IS_ANGRY";
 
-    private FollowOwnerGoal followOwnerGoal;
-
     public Tater(EntityType<? extends Tater> entityType, Level world) {
         super(entityType, world);
     }
@@ -48,12 +46,15 @@ public class Tater extends TamableAnimal {
 
     @Override
     protected void registerGoals() {
-        followOwnerGoal = new FollowOwnerGoal(this, 0.5, 10, 2);
-
         goalSelector.addGoal(0, new FloatGoal(this));
-        goalSelector.addGoal(1, followOwnerGoal);
-        goalSelector.addGoal(2, new RandomStrollGoal(this, 0.25));
-        goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.75, true));
+        goalSelector.addGoal(2, new PanicGoal(this, 0.75));
+        goalSelector.addGoal(3, new FollowOwnerGoal(this, 0.5, 10, 2.5f));
+        goalSelector.addGoal(4, new RandomStrollGoal(this, 0.3));
+        goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+
+        targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Tater.class, true, this::canAttack));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, this::canAttack));
     }
 
     @Override
@@ -137,6 +138,11 @@ public class Tater extends TamableAnimal {
         }
     }
 
+    // automatically ignores the owner
+    private boolean canAttack(LivingEntity target, ServerLevel level) {
+        return isAngry();
+    }
+
     public boolean isAngry() {
         return this.entityData.get(IS_ANGRY);
     }
@@ -144,11 +150,5 @@ public class Tater extends TamableAnimal {
     // don't allow calming the tater again (for now)
     public void makeAngry() {
         this.entityData.set(IS_ANGRY, true);
-
-        // kinda janky, but the easiest option (i think)
-        goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));
-        targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-
-        goalSelector.removeGoal(followOwnerGoal);
     }
 }

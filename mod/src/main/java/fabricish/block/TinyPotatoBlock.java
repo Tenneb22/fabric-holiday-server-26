@@ -44,6 +44,9 @@ public class TinyPotatoBlock extends Block {
                 // 20%? chance for tater to get angry
                 if (tater.getRandom().nextInt(5) == 0) {
                     tater.makeAngry();
+                    serverLevel.sendParticles(ParticleTypes.ANGRY_VILLAGER, pos.getX(), pos.getY(), pos.getZ(), 40, 1, 1, 1, 1);
+                } else {
+                    serverLevel.sendParticles(ParticleTypes.HEART, pos.getX(), pos.getY(), pos.getZ(), 40, 1, 1, 1, 1);
                 }
 
                 float yRotation = state.getValue(FACING).toYRot();
@@ -54,7 +57,7 @@ public class TinyPotatoBlock extends Block {
 
                 level.removeBlock(pos, false);
 
-                serverLevel.sendParticles(ParticleTypes.HEART, pos.getX(), pos.getY(), pos.getZ(), 40, 1, 1, 1, 1);
+
             }
 
             return InteractionResult.SUCCESS;
